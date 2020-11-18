@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: ogaye-ibm.motion-igc-jenkins.main
+  labels:
+    app: motion-igc-jenkins
+spec:
+  triggers:
+    - type: GitHub
+      github:
+        secret: secret101
+  source:
+    git:
+      uri: 'https://github.com/ogaye-ibm/motion-igc-jenkins.git'
+      ref: main
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: Jenkinsfile
+      env:
+        - name: CLOUD_NAME
+          value: openshift
+        - name: NAMESPACE
+          value: motion
+        - name: BRANCH
+          value: main
