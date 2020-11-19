@@ -18,7 +18,7 @@ public class DemoApplication  {
 
     @GetMapping(value = {"/hello", "/hello/{name}"})
     public String hello(@PathVariable(required = false) String name) {
-        name = name == null ? "Motion" : name;
+        name = name == null ? "IBM" : name;
         System.out.println("********* Hello, " + name + "!");
         System.out.println();
         return "Hello, " + name + "! \n";
